@@ -2,6 +2,8 @@ package com.henu.smp.dao.impl;
 
 import java.util.List;
 
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
 import com.henu.smp.dao.UserDao;
 import com.henu.smp.entity.User;
 
