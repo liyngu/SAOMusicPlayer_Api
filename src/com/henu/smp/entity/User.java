@@ -4,6 +4,24 @@ public class User {
     private int id;
     private String username;
     private String password;
+    private String role;
+    private Menu menus;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Menu getMenus() {
+        return menus;
+    }
+
+    public void setMenus(Menu menus) {
+        this.menus = menus;
+    }
 
     public int getId() {
         return id;

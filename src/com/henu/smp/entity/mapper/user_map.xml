@@ -2,13 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.henu.smp.entity.User">
     <resultMap type="com.henu.smp.entity.User" id="userMap">
-        <id property="id" column="id"/>
+        <id property="id" column="u_id" />
         <result property="username" column="username" />
         <result property="password" column="password" />
     </resultMap>
-    <select id="search" resultMap="userMap">
+    <select id="login" parameterType="map" resultMap="userMap">
         <![CDATA[
-            SELECT u.username, u.password FROM user AS u 
+            SELECT u.u_id, u.username FROM user AS u
+            WHERE u.username = #{username} AND u.password = #{password}
         ]]>
     </select>
+    <select id="getById" parameterType="int" resultMap="userMap">
+        <![CDATA[
+            SELECT u_id, username FROM user
+            WHERE u_id = #{id}
+        ]]>
+    </select>
+    <select id="getAll" resultMap="userMap">
+        <![CDATA[
+            SELECT u_id, username FROM user
+        ]]>
+    </select>
+    <insert id="create" parameterType="com.henu.smp.entity.User">
+        <![CDATA[
+            INSERT INTO `user`(`username`, `password`)
+            VALUE(#{username}, #{password});
+        ]]>
+    </insert>
+    <update id="update" parameterType="com.henu.smp.entity.User">
+        <![CDATA[
+            UPDATE user SET password=#{password}
+            WHERE u_id=#{id}
+        ]]>
+    </update>
+    <delete id="delete" parameterType="int">
+        <![CDATA[
+            DELETE FROM user WHERE u_id=#{id}
+        ]]>
+    </delete>
 </mapper>

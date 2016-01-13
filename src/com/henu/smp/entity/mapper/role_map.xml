@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.henu.smp.entity.Role">
+    <resultMap type="com.henu.smp.entity.Role" id="roleMap">
+        <id property="id" column="r_id"/>
+        <result property="name" column="r_name" />
+        <collection property="permissions" column="r_id"
+         ofType="com.henu.smp.entity.Permission">
+            <id property="id" column="p_id" />
+            <result property="name" column="p_name"/>
+        </collection>
+    </resultMap>
+    <select id="getByUserId" parameterType="int" resultMap="roleMap">
+        <![CDATA[
+            SELECT r.r_id, r.r_name, p.p_id, p.p_name FROM role AS r 
+            LEFT JOIN role_permission AS rp ON r.r_id = rp.role_id 
+            LEFT JOIN permission AS p ON rp.permission_id = p.p_id
+            WHERE r.r_id = #{id};
+        ]]>
+    </select>
+</mapper>

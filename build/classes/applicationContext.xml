@@ -40,7 +40,7 @@
     <!-- Mybaits 配置开始 -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost/db_saomusicplayer?characterEncoding=utf-8" />
+        <property name="url" value="jdbc:mysql://localhost/db_sao_player?characterEncoding=utf-8" />
         <property name="username" value="root" />
         <property name="password" value="123" />
     </bean>
@@ -55,8 +55,12 @@
     <bean id="userDao" class="com.henu.smp.dao.impl.UserDaoImpl">
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+    <bean id="roleDao" class="com.henu.smp.dao.impl.RoleDaoImpl">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
     <bean id="userService" class="com.henu.smp.service.impl.UserServiceImpl">
         <property name="userDao" ref="userDao" />
+        <property name="roleDao" ref="roleDao" />
     </bean>
     <!--  
     <bean id="meaningDao" class="com.henu.smp.dao.impl.MeaningDaoImpl">
