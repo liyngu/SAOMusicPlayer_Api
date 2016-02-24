@@ -114,6 +114,7 @@ public class UserServiceImpl implements UserService {
     @Produces({ MediaType.APPLICATION_JSON, "text/html; charset=UTF-8" })
     @Override
     public Response getById(@PathParam("id") int id) {
+        System.out.println("get");
         return ResponseUtil.format(userDao.getById(id));
     }
 

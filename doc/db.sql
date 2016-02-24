@@ -1,11 +1,11 @@
-DROP TABLE `user`;
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
     `u_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `username` VARCHAR(50) NOT NULL,
     `password` VARCHAR(32) NOT NULL,
     `menu_id` INT
 );
-DROP TABLE `menu`;
+DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu` (
     `m_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `m_name` VARCHAR(50) NOT NULL,
@@ -14,34 +14,34 @@ CREATE TABLE `menu` (
     `sub_menu` INT,
     `type` INT NOT NULL
 );
-DROP TABLE `song`;
+DROP TABLE IF EXISTS `song`;
 CREATE TABLE `song` (
     `s_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `s_name` VARCHAR(50) NOT NULL
 );
-DROP TABLE `menu_song`;
+DROP TABLE IF EXISTS `menu_song`;
 CREATE TABLE `menu_song` (
     `menu_id` INT NOT NULL,
     `song_id` INT NOT NULL,
     PRIMARY KEY (`menu_id`, `song_id`)
 );
-DROP TABLE `role`;
+DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
     `r_id` INT NOT NULL PRIMARY KEY,
     `r_name` VARCHAR(50) NOT NULL
 );
-DROP TABLE `permission`;
+DROP TABLE IF EXISTS `permission`;
 CREATE TABLE `permission` (
     `p_id` INT NOT NULL PRIMARY KEY,
     `p_name` VARCHAR(50) NOT NULL
 );
-DROP TABLE `user_role`;
+DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE `user_role` (
     `user_id` INT NOT NULL,
     `role_id` INT NOT NULL,
     PRIMARY KEY (`user_id`, `role_id`)
 );
-DROP TABLE `role_permission`;
+DROP TABLE IF EXISTS `role_permission`;
 CREATE TABLE `role_permission` (
     `role_id` INT NOT NULL,
     `permission_id` INT NOT NULL,
