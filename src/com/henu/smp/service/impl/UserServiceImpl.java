@@ -73,6 +73,7 @@ public class UserServiceImpl implements UserService {
     @Produces({ MediaType.APPLICATION_JSON, "text/html; charset=UTF-8" })
     @Override
     public Response create(@RequestBody String jsonStr) {
+        jsonStr = JSONUtil.formatString(jsonStr);
         System.out.println("create---" + jsonStr);
         User user = JSONUtil.formatToBean(jsonStr, User.class);
         String role = user.getRole();

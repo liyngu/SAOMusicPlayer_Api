@@ -46,4 +46,13 @@ public class JSONUtil {
         }
         return false;
     }
+
+    public static String formatString(String jsonStr) {
+        StringBuilder result = new StringBuilder();
+        String[] datas = jsonStr.split("\\\\");
+        for (String data : datas) {
+            result.append(data);
+        }
+        return result.toString();
+    }
 }
