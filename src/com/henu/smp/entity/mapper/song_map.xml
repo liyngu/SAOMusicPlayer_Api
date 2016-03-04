@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.henu.smp.entity.Song">
+    <resultMap type="com.henu.smp.entity.Song" id="songMap">
+        <id property="id" column="s_id" />
+        <result property="name" column="name" />
+        <result property="title" column="title" />
+        <result property="path" column="path" />
+    </resultMap>
+    <select id="getById" parameterType="int" resultMap="songMap">
+        <![CDATA[
+            SELECT s_id, name, title, path FROM song
+            WHERE s_id = #{id}
+        ]]>
+    </select>
+    <select id="findByName" parameterType="String" resultMap="songMap">
+        <![CDATA[
+            SELECT s_id, name, title, path FROM song
+            WHERE name LIKE CONCAT('%', #{name}, '%')
+        ]]>
+    </select>
+    <select id="getAll" resultMap="songMap">
+        <![CDATA[
+            SELECT s_id, name, title, path FROM song
+        ]]>
+    </select>
+    <insert id="create" parameterType="com.henu.smp.entity.Song">
+        <![CDATA[
+            INSERT INTO `song`(`name`, `path`)
+            VALUE(#{name}, #{path});
+        ]]>
+    </insert>
+    <update id="update" parameterType="com.henu.smp.entity.Song">
+        <![CDATA[
+            UPDATE song SET name=#{name}
+            WHERE s_id=#{id}
+        ]]>
+    </update>
+    <delete id="delete" parameterType="int">
+        <![CDATA[
+            DELETE FROM song WHERE s_id=#{id}
+        ]]>
+    </delete>
+</mapper>

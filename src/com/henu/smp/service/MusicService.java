@@ -2,10 +2,7 @@ package com.henu.smp.service;
 
 import javax.ws.rs.core.Response;
 
-public interface UserService {
-
-    Response login(String jsonStr);
-
+public interface MusicService {
     Response create(String jsonStr);
 
     Response delete(int id);
@@ -15,4 +12,6 @@ public interface UserService {
     Response getById(int id);
 
     Response findAll();
+
+    Response findByName(String name);
 }

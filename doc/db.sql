@@ -17,7 +17,9 @@ CREATE TABLE `menu` (
 DROP TABLE IF EXISTS `song`;
 CREATE TABLE `song` (
     `s_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `s_name` VARCHAR(50) NOT NULL
+    `name` VARCHAR(50) NOT NULL,
+    `title` VARCHAR(50) NOT NULL,
+    `path` VARCHAR(50) NOT NULL
 );
 DROP TABLE IF EXISTS `menu_song`;
 CREATE TABLE `menu_song` (
@@ -71,3 +73,8 @@ INSERT INTO `role_permission`(`role_id`, `permission_id`) VALUE(1, 5);
 INSERT INTO `role_permission`(`role_id`, `permission_id`) VALUE(2, 3);
 INSERT INTO `role_permission`(`role_id`, `permission_id`) VALUE(2, 4);
 INSERT INTO `role_permission`(`role_id`, `permission_id`) VALUE(3, 5);
+
+INSERT INTO `song`(`name`, `title`, `path`) VALUE("怒放的生命", "怒放的生命", "1111.mp3");
+INSERT INTO `song`(`name`, `title`, `path`) VALUE("aaa", "aaa", "1111.mp3");
+INSERT INTO `song`(`name`, `title`, `path`) VALUE("bbb", "bbb", "1111.mp3");
+INSERT INTO `song`(`name`, `title`, `path`) VALUE("abb", "abb", "1111.mp3");

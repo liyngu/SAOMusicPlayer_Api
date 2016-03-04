@@ -42,8 +42,6 @@ public class UserServiceImpl implements UserService {
     @Produces({ MediaType.APPLICATION_JSON, "text/html; charset=UTF-8" })
     @Override
     public Response login(@RequestBody String jsonStr) {
-        // JSONObject jsonObject = JSONUtil.formatToMap(jsonStr);
-        // String loginMethod = JSONUtil.getString(jsonObject, "loginmethod");
         User user = JSONUtil.formatToBean(jsonStr, User.class);
         user = userDao.login(user.getUsername(), user.getPassword());
         if (user == null) {
@@ -123,7 +121,7 @@ public class UserServiceImpl implements UserService {
     @Path("/")
     @Produces({ MediaType.APPLICATION_JSON, "text/html; charset=UTF-8" })
     @Override
-    public Response getAll() {
+    public Response findAll() {
         List<User> users = userDao.getAll();
         this.setUsersRole(users);
         return ResponseUtil.format(users);

@@ -26,6 +26,7 @@
     <jaxrs:server address="/">
         <jaxrs:serviceBeans>
             <ref bean="userService" />
+            <ref bean="musicService" />
         </jaxrs:serviceBeans>
         <jaxrs:extensionMappings>
             <entry key="json" value="application/json"/>
@@ -61,6 +62,12 @@
     <bean id="userService" class="com.henu.smp.service.impl.UserServiceImpl">
         <property name="userDao" ref="userDao" />
         <property name="roleDao" ref="roleDao" />
+    </bean>
+    <bean id="songDao" class="com.henu.smp.dao.impl.SongDaoImpl">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="musicService" class="com.henu.smp.service.impl.MusicServiceImpl">
+        <property name="songDao" ref="songDao" />
     </bean>
     <!--  
     <bean id="meaningDao" class="com.henu.smp.dao.impl.MeaningDaoImpl">
